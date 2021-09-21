@@ -1,15 +1,16 @@
 <template>
     <div id="menu">
-        <p style="color : white;"><a href=""> Homepage </a></p>
+        <base-button> HomePage </base-button>
         <p style="color : white;"> Username </p>
     </div>
 </template>
 
 <script>
+import BaseButton from './BaseButton.vue'
     export default {
         name: 'BaseHeader',
         components: {
-
+            BaseButton
         }
     }
 </script>
