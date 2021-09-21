@@ -1,6 +1,6 @@
 <template>
     <div id="menu">
-        <base-button> HomePage </base-button>
+        <base-button color="primary" :disabled="true" > HomePage </base-button>
         <p style="color : white;"> Username </p>
     </div>
 </template>
