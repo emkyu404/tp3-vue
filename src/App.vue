@@ -1,18 +1,18 @@
 <template>
-  <base-header />
-  <HomePage></HomePage>
-  <base-footer />
+  <base-layout>
+  <home-page />
+  </base-layout>
 </template>
 
 <script>
 import HomePage from './components/HomePage.vue'
-import BaseHeader from './components/BaseHeader.vue'
+import BaseLayout from './components/BaseLayout.vue'
 
 export default {
   name: 'App',
   components: {
     HomePage,
-    BaseHeader
+    BaseLayout
   }
 }
 </script>
@@ -26,5 +26,10 @@ export default {
   color: #2c3e50;
   display : flex;
   flex-direction : column;
+  margin : none;
+}
+
+body{
+  margin : 0;
 }
 </style>
