@@ -1,6 +1,6 @@
 <template>
   <base-button
-    :disabled="isPending"
+    :class="{pending : isPending}"
     :color="color"
     @click.stop.prevent="handleClick"
   >
@@ -23,7 +23,11 @@ async function asyncCall(){
         console.log('called')
         const result = await resolveAfter2Seconds()
         console.log(result)  
- 
+}
+
+async function add1sec(){
+    const result = await resolveAfter1Seconds()
+    console.log(result) 
 }
 
 function resolveAfter2Seconds(){
@@ -31,6 +35,14 @@ function resolveAfter2Seconds(){
         setTimeout(() => {
             resolve('resolved')
         }, 2000)
+    })
+}
+
+function resolveAfter1Seconds(){
+    return new Promise(resolve => {
+        setTimeout(() => {
+            resolve('1 sec added')
+        }, 1000)
     })
 }
 
@@ -48,16 +60,28 @@ export default {
 
   data () {
     return {
-      isPending: false
+      isPending: false,
+      clickWhilePending : 0
     }
   },
 
   methods: {
     async handleClick () {
-        this.isPending = true;
-        await asyncCall(this.isPending)
-        this.isPending = false;
+        /* Exercice 9 */
+        if(!this.isPending){
+            this.isPending = true;
+            await asyncCall(this.isPending)
+            while(this.clickWhilePending){
+                await add1sec()
+                this.clickWhilePending--
+            }
+             this.isPending = false;
+        }  else{
+            console.log("Clicked While pending")
+            this.clickWhilePending++
+        }
     }
+       
 
     
   }
@@ -82,6 +106,12 @@ button:focus{
 }
 
 button:disabled{
+    cursor : not-allowed;
+}
+
+button.pending{
+    background-color : #D9F1E6 !important;
+    border-color : #D9F1E6 !important;
     cursor : not-allowed;
 }
 </style>

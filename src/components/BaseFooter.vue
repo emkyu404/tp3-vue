@@ -1,6 +1,6 @@
 <template>
     <div id="footer">
-        <p style="color : white;"> Vue Practice - BUI & CHENG </p>
+        <p style="color : white;"> Vue Practice - ARNAUD, BUI & CHENG </p>
     </div>
 </template>
 
