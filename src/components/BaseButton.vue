@@ -22,7 +22,10 @@
             }
         },
         props:{
-            color : String,
+            color: {
+                type: String,
+                default: 'primary'
+            },
             disabled : Boolean
         },
         computed: {
